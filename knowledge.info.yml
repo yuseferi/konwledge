@@ -1,0 +1,6 @@
+name: 'Knowledge Field '
+type: 'module'
+description: 'Defines Knowledge field '
+package: 'Zeyton'
+core: '8.x'
+

@@ -1,0 +1,7 @@
+knowledge.gettitle:
+  path: 'get/knowledge'
+  defaults:
+    _controller: '\Drupal\knowledge\Controller\DataHanlder::getByTitle'
+    _title: 'Knowledge'
+  requirements:
+    _permission: 'administration trends'
