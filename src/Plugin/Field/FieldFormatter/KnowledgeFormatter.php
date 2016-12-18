@@ -7,7 +7,6 @@
 
 namespace Drupal\knowledge\Plugin\Field\FieldFormatter;
 
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Field\FieldItemInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\FormatterBase;
@@ -18,9 +17,10 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @FieldFormatter(
  *   id = "knowledge_formatter",
- *   label = @Translation("Knowledge formatter"),
+ *   module = "knowledge",
+ *   label = @Translation("Knowledge"),
  *   field_types = {
- *     "done_type"
+ *     "knowledge"
  *   }
  * )
  */
@@ -62,7 +62,6 @@ class KnowledgeFormatter extends FormatterBase {
         foreach ($items as $delta => $item) {
             $elements[$delta] = ['#markup' => $this->viewValue($item)];
         }
-        kint($elements);
         return $elements;
     }
 
@@ -72,14 +71,17 @@ class KnowledgeFormatter extends FormatterBase {
      * @param \Drupal\Core\Field\FieldItemInterface $item
      *   One field item.
      *
-     * @return string
-     *   The textual output generated.
+     * @return array
+     *   The textual output generated as a render array.
      */
     protected function viewValue(FieldItemInterface $item) {
         // The text value has no text format assigned to it, so the user input
         // should equal the output, including newlines.
-
-        return nl2br(Html::escape($item->knowledge_title));
+        return [
+            '#type' => 'inline_template',
+            '#template' => '{{ value|nl2br }}',
+            '#context' => ['value' => $item->value],
+        ];
     }
 
 }
