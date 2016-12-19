@@ -9,6 +9,7 @@ namespace Drupal\knowledge\Plugin\Field\FieldType;
 
 use Drupal\Core\Field\FieldItemBase;
 use Drupal\Core\Field\FieldStorageDefinitionInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\TypedData\DataDefinition;
 
 /**
@@ -55,12 +56,9 @@ class KnowledgeType extends FieldItemBase {
             'columns' => array(
                 'value' => array(
                     'type' => 'varchar',
-                    'length' => 255,
+                    'length' => 256,
                     'not null' => TRUE,
                 ),
-            ),
-            'indexes' => array(
-                'value' => array('value'),
             ),
         );
 

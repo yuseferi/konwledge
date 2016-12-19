@@ -77,9 +77,9 @@ class KnowledgeWidget extends WidgetBase {
         $element['value'] = $element + array(
             '#type' => 'textfield',
             '#autocomplete_route_name' => 'knowledge.gettitle',
-            '#autocomplete_route_parameters' => array(),
+            '#autocomplete_route_parameters' =>array('lang' => 'en'),
             '#title' => 'Knowledge Item',
-            '#default_value' => isset($items[$delta]->knowledge) ? $items[$delta]->knowledge : NULL,
+            '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : NULL,
             '#size' => $this->getSetting('size'),
             '#placeholder' => $this->getSetting('placeholder'),
             '#maxlength' => $this->getFieldSetting('max_length'),
